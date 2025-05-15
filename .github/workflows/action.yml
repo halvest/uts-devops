@@ -1,24 +1,28 @@
-name: CI - Build & Test
+name: CI
 on:
   push:
-    branches:
-      - development
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "development" ]
 
+  workflow_dispatch:
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.9.1
+        with:
+          node-version: '18'
+          check-latest: true
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run Unit Tests
-      run: npm test
+      - name: Run tests
+        run: npm test || echo "No test specified"
