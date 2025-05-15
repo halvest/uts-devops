@@ -1,20 +1,48 @@
 {
   "name": "uts-devops",
   "version": "1.0.0",
-  "description": "- Form Login dengan autentikasi sederhana.",
-  "main": "index.js",
+  "description": "Form Login dengan autentikasi sederhana.",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/halvest/uts-devops.git"
+    "url": "https://github.com/halvest/uts-devops.git"
   },
-  "keywords": [],
+  "keywords": [
+    "login",
+    "react",
+    "devops"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/halvest/uts-devops/issues"
   },
-  "homepage": "https://github.com/halvest/uts-devops#readme"
+  "homepage": "/",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

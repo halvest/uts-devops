@@ -1,27 +1,42 @@
-name: CI
+name: CI - DevOps UTS
 on:
   push:
     branches: [ "development" ]
-  
-
   workflow_dispatch:
+
 jobs:
   build:
+    name: Build and Test Application
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.9.1
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
-          check-latest: true
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: npm
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test || echo "No test specified"
+      - name: Run Tests
+        run: |
+          if [ -f package.json ]; then
+            npm test
+          else
+            echo "No package.json found. Skipping tests."
+          fi
+
+  cache:
+    name: Cache NPM Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
