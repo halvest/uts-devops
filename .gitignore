@@ -13,28 +13,11 @@ pids/
 *.pid
 *.seed
 *.pid.lock
-
-# dotenv environment variables
 .env
-
-# Mac system files
-.DS_Store
-
-# VSCode settings (optional)
 .vscode/
-
-# Coverage directory used by tools like istanbul
 coverage/
-
-# Production build (optional if you use build step)
 dist/
 build/
-
-# Session or temp files (optional)
 *.swp
 *.tmp
 
-# IDEs
-.idea/
-*.sublime-workspace
-*.sublime-project
